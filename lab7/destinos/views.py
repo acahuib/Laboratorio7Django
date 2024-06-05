@@ -26,3 +26,10 @@ def modificar_destino(request, id):
     else:
         form = DestinoForm(instance=destino)
     return render(request, 'destinos/form_destino.html', {'form': form})
+
+def eliminar_destino(request, id):
+    destino = get_object_or_404(Destino, id=id)
+    if request.method == 'POST':
+        destino.delete()
+        return redirect('listar_destinos')
+    return render(request, 'destinos/eliminar_destino.html', {'destino': destino})
