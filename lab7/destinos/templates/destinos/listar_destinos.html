@@ -2,17 +2,24 @@
 <html>
 <head>
     <title>Listar Destinos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Destinos Turísticos</h1>
-    <a href="{% url 'anadir_destino' %}">Añadir Destino</a>
-    <ul>
-        {% for destino in destinos %}
-            <li>
-                {{ destino.nombre }} - <a href="{% url 'modificar_destino' destino.id %}">Modificar</a> - <a href="{% url 'eliminar_destino' destino.id %}">Eliminar</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+        <h1 class="mb-4">Destinos Turísticos</h1>
+        <a href="{% url 'anadir_destino' %}" class="btn btn-primary mb-3">Añadir Destino</a>
+        <ul class="list-group">
+            {% for destino in destinos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ destino.nombre }}
+                    <span>
+                        <a href="{% url 'modificar_destino' destino.id %}" class="btn btn-warning btn-sm">Modificar</a>
+                        <a href="{% url 'eliminar_destino' destino.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
 

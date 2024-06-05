@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Destino Turístico</title>
+    <title>{{ form.instance.id|yesno:"Modificar,Crear" }} Destino Turístico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>{{ form.instance.id|yesno:"Modificar,Crear" }} Destino Turístico</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="{% url 'listar_destinos' %}">Volver</a>
+    <div class="container mt-5">
+        <h1>{{ form.instance.id|yesno:"Modificar,Crear" }} Destino Turístico</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+        <a href="{% url 'listar_destinos' %}" class="btn btn-secondary mt-3">Volver</a>
+    </div>
 </body>
 </html>
 
