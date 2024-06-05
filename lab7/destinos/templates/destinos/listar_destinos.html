@@ -8,17 +8,25 @@
     <div class="container mt-5">
         <h1 class="mb-4">Destinos Turísticos</h1>
         <a href="{% url 'anadir_destino' %}" class="btn btn-primary mb-3">Añadir Destino</a>
-        <ul class="list-group">
+        <div class="row">
             {% for destino in destinos %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ destino.nombre }}
-                    <span>
-                        <a href="{% url 'modificar_destino' destino.id %}" class="btn btn-warning btn-sm">Modificar</a>
-                        <a href="{% url 'eliminar_destino' destino.id %}" class="btn btn-danger btn-sm">Eliminar</a>
-                    </span>
-                </li>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ destino.imagenCiudad.url }}" class="card-img-top" alt="{{ destino.nombreCiudad }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ destino.nombreCiudad }}</h5>
+                            <p class="card-text">{{ destino.descripcionCiudad }}</p>
+                            <p class="card-text"><strong>Precio: </strong>${{ destino.precioTour }}</p>
+                            {% if destino.ofertaTour %}
+                                <p class="card-text text-danger"><strong>¡Oferta!</strong></p>
+                            {% endif %}
+                            <a href="{% url 'modificar_destino' destino.id %}" class="btn btn-warning btn-sm">Modificar</a>
+                            <a href="{% url 'eliminar_destino' destino.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </body>
 </html>

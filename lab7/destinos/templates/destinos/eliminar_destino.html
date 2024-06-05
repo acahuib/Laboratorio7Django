@@ -7,7 +7,7 @@
 <body>
     <div class="container mt-5">
         <h1>Eliminar Destino</h1>
-        <p>¿Estás seguro de que deseas eliminar "{{ destino.nombre }}"?</p>
+        <p>¿Estás seguro de que deseas eliminar "{{ destino.nombreCiudad }}"?</p>
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Eliminar</button>
