@@ -16,3 +16,13 @@ def anadir_destino(request):
         form = DestinoForm()
     return render(request, 'destinos/form_destino.html', {'form': form})
 
+def modificar_destino(request, id):
+    destino = get_object_or_404(Destino, id=id)
+    if request.method == 'POST':
+        form = DestinoForm(request.POST, instance=destino)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_destinos')
+    else:
+        form = DestinoForm(instance=destino)
+    return render(request, 'destinos/form_destino.html', {'form': form})
