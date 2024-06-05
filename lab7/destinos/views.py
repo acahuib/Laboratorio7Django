@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Destino
 from .forms import DestinoForm
 
+def inicio(request):
+    return render(request, 'destinos/inicio.html')
+
 def index(request):
     return redirect('listar_destinos')
 
